@@ -1,5 +1,6 @@
 #lang racket
 ;TDA USUARIO
+;Representación => '(nombre, contraseña, id_usuario, tipo)
 ;nombre de usuario
 ;contraseña
 ;id usuario
@@ -9,7 +10,7 @@
 
 #|
  Descripción: contructor usuario
- Dominio: (str x str x int x (int x int x int x ...) x (int x int x int x int x int x ...))
+ Dominio: str X str X int X str
  Recorrido: list
 |#
 (define (set_user nombre contraseña id_usuario tipo)
@@ -67,7 +68,7 @@
   )
 
 
-
+(provide (all-defined-out)) ;exporta todas las funciones de este archivo, debe ir al final
 ; ///// Pertenecia /////
 
 #|
@@ -76,10 +77,32 @@
  Recorrido: bool
 |#
 (define (usuario? usuario)
-  (if (and (string? (get_nombre usuario)) (string? (get_contraseña usuario)) (integer? (get_id usuario)) (string? (get_tipo usuario)) )
+  (if (and (string? (get_nombre usuario)) (string? (get_contraseña usuario)) (integer? (get_id_usuario usuario)) (string? (get_tipo usuario)) )
       #t
       #f
       )
   )
 
+; ///// Funcion extra /////
+
+#|
+ Descripción: Función que convierte los datos de un usuario a string, esta función muestra todos los datos menos la contraseña de los usuarios registrados, para verla debe iniciar sesión
+ Dominio: list
+ Recorrido: str
+ Ejemplos:
+(usuario->string '("Torre" "1111" 10 (15) (45)))
+(usuario->string '("Anri" "1234" 10 (301) (105)))
+(usuario->string '("e-girl" "1920" 25 (29) (54)))
+|#
+(define (usuario->string usuario)
+  (if (null? usuario)
+      null
+      (string-append
+       "   [ Nombre de usuario: " (get_nombre usuario) " ]"
+       "   [ tipo: " (number->string (get_tipo usuario)) " ]"                 
+       "   [ id usuario: " (string-join(map number->string (get_id_usuario usuario)) " ") " ]"                     
+       "\n" "\n" "\n"
+       )
+      )      
+  )
 
