@@ -68,7 +68,7 @@
   )
 
 
-(provide (all-defined-out)) ;exporta todas las funciones de este archivo, debe ir al final
+
 ; ///// Pertenecia /////
 
 #|
@@ -106,3 +106,4 @@
       )      
   )
 
+(provide (all-defined-out)) ;exporta todas las funciones de este archivo, debe ir al final

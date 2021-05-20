@@ -13,7 +13,7 @@
 
 |#
 (define (set_comentario texto autor fecha hora)
-  (if (and (string? texto) (string? autor) (list_int? fecha) (list_int? hora))
+  (if (and (string? texto) (string? autor) (integer? fecha) (integer? hora))
       (list texto autor fecha hora)
       null
       )

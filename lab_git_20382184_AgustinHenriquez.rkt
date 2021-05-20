@@ -8,4 +8,20 @@
 (require "TDA_Comentario.rkt")
 
 
-;////
+;; ///// Funcion register /////
+
+#|
+ Descripción: Función que crea un nuevo usuario en 
+ Dominio: TDA Stack x str x str
+ Recorrido: TDA Stack
+|#
+;EN DESARROLLO
+(define (register cuenta nombre contraseña)
+  (if (and (cuenta? cuenta) (string? nombre) (string? contraseña))
+      (if (registrado? (get_usuarios cuenta) nombre contraseña) 
+          cuenta           
+          (set_cuenta (cons (set_usuario nombre contraseña) (get_usuario cuenta))  ))      
+          )
+      cuenta
+      )
+  )

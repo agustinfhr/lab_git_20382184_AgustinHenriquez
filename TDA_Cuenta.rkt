@@ -18,7 +18,7 @@
  Recorrido: list
 |#
 (define (set_cuenta usuario publicaciones)
-  (if (and (string? nombre) (string? contraseña) (integer? id_usuario) (string? tipo))
+  (if (and (string? nombre) (publicacion? publicaciones))
        (list cuenta usuario publicaciones)
       null
       )
