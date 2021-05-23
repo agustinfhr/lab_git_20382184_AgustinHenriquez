@@ -12,8 +12,8 @@
 
 #|
  Descripción: Función que crea un nuevo usuario en 
- Dominio: TDA Stack x str x str
- Recorrido: TDA Stack
+ Dominio: TDA Cuenta x str x str
+ Recorrido: TDA Cuenta
 |#
 ;EN DESARROLLO
 (define (register cuenta nombre contraseña)

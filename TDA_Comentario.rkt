@@ -10,11 +10,10 @@
  Descripción: Constructor de un comentario
  Dominio: 
  Recorrido: list
-
 |#
-(define (set_comentario texto autor fecha hora)
-  (if (and (string? texto) (string? autor) (integer? fecha) (integer? hora))
-      (list texto autor fecha hora)
+(define (set_comentario id_reaccion texto autor tiempo)
+  (if (and (string? texto) (integer? id_reaccion) (string? autor) (list? tiempo))
+      (list id_reaccion texto autor tiempo)
       null
       )
   )

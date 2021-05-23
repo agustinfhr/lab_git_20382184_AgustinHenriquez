@@ -89,10 +89,6 @@
  Descripción: Función que convierte los datos de un usuario a string, esta función muestra todos los datos menos la contraseña de los usuarios registrados, para verla debe iniciar sesión
  Dominio: list
  Recorrido: str
- Ejemplos:
-(usuario->string '("Torre" "1111" 10 (15) (45)))
-(usuario->string '("Anri" "1234" 10 (301) (105)))
-(usuario->string '("e-girl" "1920" 25 (29) (54)))
 |#
 (define (usuario->string usuario)
   (if (null? usuario)
