@@ -14,7 +14,7 @@
  Dominio: 
  Recorrido: list
 |#
-(define (set_publicacion id_publicacion autor texto reacciones fecha hora)
+(define (set_publicacion id_publicacion autor texto likes comentarios fecha hora)
   (if (and (integer? id_publicacion) (string? autor) (string? texto) (list? reacciones) (integer? fecha) (integer? hora))
        (list id_publicacion autor reacciones fecha hora)
       null

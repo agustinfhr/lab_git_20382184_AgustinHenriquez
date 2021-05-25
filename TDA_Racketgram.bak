@@ -1,2 +1,32 @@
 #lang racket
-;TDA_RACKET-BOOK
+;TDA RACKETGRAM
+;lista cuentas
+;lista publicaciones
+
+
+; Representación TDA Racketgram general => (usuarios, preguntas, respuestas, espacio para usuario activo)
+
+; Representación TDA Usuario => (nombre, contraseña, reputación, ID_pregunta, ID_respuesta)
+
+; Representación TDA Publicaciones => (titulo, contenido_p, autor, fecha_p, Id_pregunta, votos_favor, votos_contra, recompensas, visualizaciones, estado(a/c), Id_respuesta, reportes_ofensa, labels_p)
+
+; Representación TDA Reacciones => (contenido_r, autor_r, fecha_r, Id_r, v_favor_r, v_contra_r, estado_aceptación, r_ofensa_r, labels_r)
+
+; Representación TDA Comentario => (dia, mes, año)
+
+; Representación TDA Fecha => (dia, mes, año)
+
+
+
+; Ahora, desarrollando las representaciones quedaría algo así:
+
+; STACK => '(TDA usuario x TDA pregunta x TDA respuesta x list)
+
+; USUARIO => '(str x str x int x (int x int x int x ...) x (int x int x int x int x int x ...))
+
+; PREGUNTA => '(str x str x str x (int x int x int) x int x int x int x int x str x (int x int x int x int x ...) x int x (str x str x str x str x ...))
+
+; RESPUESTA => '(str x str x (int x int x int) x int x int x int x str x int x (str x str x str x ...))
+
+; FECHA => '(int x int x int)
+

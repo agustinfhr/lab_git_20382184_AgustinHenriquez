@@ -1,27 +1,37 @@
 #lang racket
 
 (require "TDA_Racketgram.rkt")
-(require "TDA_Cuenta.rkt")
 (require "TDA_Usuario.rkt")
 (require "TDA_Publicaciones.rkt")
-(require "TDA_Reacciones.rkt")
 (require "TDA_Comentario.rkt")
 
 
 ;; ///// Funcion register /////
 
 #|
- Descripción: Función que crea un nuevo usuario en 
- Dominio: TDA Cuenta x str x str
- Recorrido: TDA Cuenta
+ Descripción: Función que crea un nuevo usuario en Racketgram
+ Dominio: TDA Racketgram x str x str
+ Recorrido: TDA Racketgram
 |#
 ;EN DESARROLLO
-(define (register cuenta nombre contraseña)
-  (if (and (cuenta? cuenta) (string? nombre) (string? contraseña))
-      (if (registrado? (get_usuarios cuenta) nombre contraseña) 
+(define (register Racketgram nombre contraseña)
+  (if (and (Racketgram? Racketgram) (string? nombre) (string? contraseña))
+      (if (registrado? (get_usuarios Racketgram) nombre contraseña) 
           cuenta           
-          (set_cuenta (cons (set_usuario nombre contraseña) (get_usuario cuenta))  ))      
+          (set_Racketgram (cons (set_usuario nombre contraseña) (get_usuario Racketgram)))      
           )
-      cuenta
+      Racketgram
       )
   )
+
+; ///// Función login /////
+
+#|
+ Descripción: Función que permite iniciar sesión a un usuario registrado 
+ Dominio: TDA Racketgram x str x str x function
+ Recorrido: function -> Racketgram
+|#
+(define (login Racketgram nombre contraseña function))
+
+
+

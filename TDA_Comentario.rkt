@@ -13,7 +13,7 @@
  Dominio: 
  Recorrido: list
 |#
-(define (set_comentario texto id_reaccion autor tiempo)
+(define (set_comentario texto id_publicacion autor tiempo)
   (if (and (string? texto) (integer? id_reaccion) (string? autor) (list? tiempo))
       (list texto id_reaccion autor tiempo)
       null

@@ -13,7 +13,7 @@
  Dominio: str X str X int X str
  Recorrido: list
 |#
-(define (set_user nombre contraseña id_usuario tipo)
+(define (set_user nombre contraseña tipo id_publicacion)
   (if (and (string? nombre) (string? contraseña) (integer? id_usuario) (string? tipo))
        (list nombre contraseña id_usuario tipo)
       null
