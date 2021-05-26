@@ -10,10 +10,10 @@
 
 #|
  Descripción: contructor usuario
- Dominio: str X str X int X str
+ Dominio: str X str X str X list X list X list X list X list
  Recorrido: list
 |#
-(define (set_user nombre contraseña tipo id_publicacion)
+(define (set_user nombre contraseña tipo fecha hora seguidores id_publicacion p_compartidas)
   (if (and (string? nombre) (string? contraseña) (integer? id_usuario) (string? tipo))
        (list nombre contraseña id_usuario tipo)
       null

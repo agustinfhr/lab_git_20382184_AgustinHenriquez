@@ -14,7 +14,7 @@
  Dominio: 
  Recorrido: list
 |#
-(define (set_publicacion id_publicacion autor texto likes comentarios fecha hora)
+(define (set_publicacion id_publicacion autor contenido likes comentarios fecha hora)
   (if (and (integer? id_publicacion) (string? autor) (string? texto) (list? reacciones) (integer? fecha) (integer? hora))
        (list id_publicacion autor reacciones fecha hora)
       null
@@ -110,6 +110,15 @@
   )
 
 ; ///// Funciones Extra /////
+
+
+#|
+ Descripción: Función que crea una publicacion compartida
+ Dominio: int
+ Recorrido: list
+|#
+(define (set_compartir id_publicacion))
+
 
 #|
  Descripción: Función que convierte una publicacion a un string 

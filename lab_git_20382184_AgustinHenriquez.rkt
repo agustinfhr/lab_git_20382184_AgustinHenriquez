@@ -31,7 +31,23 @@
  Dominio: TDA Racketgram x str x str x function
  Recorrido: function -> Racketgram
 |#
-(define (login Racketgram nombre contraseña function))
+(define (login Racketgram nombre contraseña function)
+
+  (if (and (Racketgram? Racketgram) (string? nombre) (string? contraseña))
+
+      
 
 
+; ///// Función post /////
 
+; ///// Función follow /////
+
+; ///// Función share /////
+
+; ///// Función socialnetwork->string /////
+
+; otras
+
+; ///// Función comment /////
+
+; ///// Función like /////
