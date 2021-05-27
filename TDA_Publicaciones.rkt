@@ -4,19 +4,19 @@
 ;id publicacion
 ;autor
 ;fecha
-;hora
+
 
 
 ; ///// Constructor /////
 
 #|
  Descripción: contructor publicaciones
- Dominio: 
+ Dominio: int x str x str x list x list 
  Recorrido: list
 |#
-(define (set_publicacion id_publicacion autor contenido likes comentarios fecha hora)
-  (if (and (integer? id_publicacion) (string? autor) (string? texto) (list? reacciones) (integer? fecha) (integer? hora))
-       (list id_publicacion autor reacciones fecha hora)
+(define (set_publicacion id_publicacion autor contenido comentarios fecha)
+  (if (and (integer? id_publicacion) (string? autor) (string? contenido) (list? comentarios) (list? fecha))
+       (list id_publicacion autor contenido comentarios fecha)
       null
       )
   )
@@ -24,12 +24,12 @@
 ; ///// Selector /////
 
 #|
- Descripción: Selecciona una publicacion 
+ Descripción: Selecciona la id de la publicacion 
  Dominio: list
  Recorrido: int
 |#
 (define (get_id_publicacion publicacion)
-  (if (= 6 (length publicacion))
+  (if (= 5 (length publicacion))
       (car publicacion)
       null
       )
@@ -40,32 +40,32 @@
  Dominio: list
  Recorrido: str
 |#
-(define (get_autor publicacion)
-  (if (= 6 (length publicacion))
+(define (get_autor_p publicacion)
+  (if (= 5 (length publicacion))
       (car (cdr publicacion))
       null
       )
   )
 
 #|
- Descripción: Selecciona el texto de la publicacion
+ Descripción: Selecciona el contenido de la publicacion
  Dominio: list
  Recorrido: str
 |#
-(define (get_texto publicacion)
-  (if (= 6 (length publicacion))
+(define (get_contenido publicacion)
+  (if (= 5 (length publicacion))
       (car (cdr (cdr publicacion)))
       null
       )
   )
 
 #|
- Descripción: Selecciona las reacciones de la publicacion 
+ Descripción: Selecciona los comentarios de la publicacion 
  Dominio: list
  Recorrido: list
 |#
-(define (get_reacciones publicacion)
-  (if (= 6 (length publicacion))
+(define (get_comentarios publicacion)
+  (if (= 5 (length publicacion))
       (car (cdr (cdr (cdr publicacion))))
       null
       )
@@ -76,21 +76,9 @@
  Dominio: list
  Recorrido: int
 |#
-(define (get_fecha publicacion)
-  (if (= 6 (length publicacion))
+(define (get_fecha_p publicacion)
+  (if (= 5 (length publicacion))
       (car (cdr (cdr (cdr (cdr publicacion)))))
-      null
-      )
-  )
-
-#|
- Descripción: Selecciona la hora de la publicacion 
- Dominio: list
- Recorrido: int
-|#
-(define (get_hora publicacion)
-  (if (= 6 (length publicacion))
-      (car (cdr (cdr (cdr (cdr (cdr publicacion))))))
       null
       )
   )
@@ -103,21 +91,13 @@
  Recorrido: bool
 |#
 (define (publicacion? publicacion)
-  (if (and (integer? get_id_publicacion) (string? get_autor) (string? get_texto) (list? get_reacciones) (integer? get_fecha) (integer? get_hora))      
+  (if (and (integer? get_id_publicacion) (string? get_autor_p) (string? get_contenido) (list? get_comentarios) (list? get_fecha_p))      
       #t
       #f
       )
   )
 
 ; ///// Funciones Extra /////
-
-
-#|
- Descripción: Función que crea una publicacion compartida
- Dominio: int
- Recorrido: list
-|#
-(define (set_compartir id_publicacion))
 
 
 #|
@@ -128,12 +108,11 @@
 (define (publicacion->string publicacion)
   (if (null? publicacion)
       null
-      (string-append "   " (get_texto publicacion) "\n"                            
-                     "   Autor: " (get_autor publicacion)                          
-                     "  " "Fecha: (" (string-join (map number->string (get_fecha publicacion)) " ") ")"                           
-                     "  " "Hora: " (number->string (get_hora publicacion)) 
+      (string-append "   " (get_contenido publicacion) "\n"                            
+                     "   Autor: " (get_autor_p publicacion)                          
+                     "  " "Fecha: (" (string-join (map number->string (get_fecha_p publicacion)) " ") ")"                           
                      "  " "id publicacion: " (string-join(get_id_publicacion publicacion)) "\n" "\n"
-                     "   " (get_reacciones publicacion) "\n" "\n" "\n" "\n")              
+                     "   " (get_comentarios publicacion) "\n" "\n" "\n" "\n")              
       )
   )
 

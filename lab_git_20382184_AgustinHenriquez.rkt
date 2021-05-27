@@ -1,46 +1,57 @@
 #lang racket
 
-(require "TDA_Racketgram.rkt")
+(require "TDA_socialnetwork_edit.rkt")
 (require "TDA_Usuario.rkt")
 (require "TDA_Publicaciones.rkt")
 (require "TDA_Comentario.rkt")
+(require "TDA_Fecha.rkt")
+(require "encryptDecryptFunction.rkt")
+(require "funcionesComplementarias.rkt")
 
 
-;; ///// Funcion register /////
+
+;; ///// Funcion register /////  
 
 #|
- Descripción: Función que crea un nuevo usuario en Racketgram
- Dominio: TDA Racketgram x str x str
- Recorrido: TDA Racketgram
+ Descripción: Función que crea un nuevo usuario en socialnetwork
+ Dominio: TDA socialnetwork x str x str x fecha
+ Recorrido: TDA socialnetwork
 |#
-;EN DESARROLLO
-(define (register Racketgram nombre contraseña)
-  (if (and (Racketgram? Racketgram) (string? nombre) (string? contraseña))
-      (if (registrado? (get_usuarios Racketgram) nombre contraseña) 
-          cuenta           
-          (set_Racketgram (cons (set_usuario nombre contraseña) (get_usuario Racketgram)))      
+
+(define (register Socialnetwork nombre contraseña fecha)
+  
+  
+  (if (and (socialnetwork? Socialnetwork) (string? nombre) (string? contraseña) (fecha? fecha))
+      
+     
+      (if (ya_registrado? (get_usuarios_sn Socialnetwork) nombre contraseña)        
+          
+          Socialnetwork
+          
+          (socialnetwork (get_name Socialnetwork) (get_date Socialnetwork) (cons (set_user nombre contraseña fecha '() '() '() '()) (get_usuarios_sn Socialnetwork)) (get_publicaciones_sn Socialnetwork))      
           )
-      Racketgram
+      
+      
+      Socialnetwork
+      
       )
   )
+
+; (register '("Racketgram" '(4 4 2044) encryptFunction decryptFunction '() '()) "user1" "con" '(4 4 2044))
 
 ; ///// Función login /////
 
 #|
  Descripción: Función que permite iniciar sesión a un usuario registrado 
  Dominio: TDA Racketgram x str x str x function
- Recorrido: function -> Racketgram
+ Recorrido: function ->
 |#
-(define (login Racketgram nombre contraseña function)
-
-  (if (and (Racketgram? Racketgram) (string? nombre) (string? contraseña))
-
-      
+    
 
 
 ; ///// Función post /////
 
-; ///// Función follow /////
+; ///// Función follow /////  
 
 ; ///// Función share /////
 

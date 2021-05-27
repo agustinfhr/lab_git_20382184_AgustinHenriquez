@@ -5,7 +5,6 @@
 ; ///// Constructor /////
 
 
-
 #|
  Descripción: Constructor fecha
  Dominio: int x int x int

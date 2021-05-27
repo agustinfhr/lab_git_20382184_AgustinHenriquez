@@ -1,0 +1,21 @@
+#lang racket
+;Funciones encryptFunction decryptFunction
+
+
+; ///// Constructor /////
+
+
+(define (encryptFunction ))
+
+(define (decryptFunction ))
+  
+
+  
+      
+  
+
+
+; ///// Selector /////
+
+
+(provide (all-defined-out)) ;exporta todas las funciones de este archivo, debe ir al final

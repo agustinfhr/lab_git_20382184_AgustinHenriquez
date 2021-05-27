@@ -1,21 +1,22 @@
 #lang racket
 ;TDA Comentarios
-;id comentario
 ;texto
 ;autor
 ;fecha
-;hora
+
+(require "TDA_Fecha.rkt")
+
 
 ; ///// Constructores /////
 
 #|
  Descripción: Constructor de un comentario
- Dominio: 
+ Dominio: str x int x str x list
  Recorrido: list
 |#
-(define (set_comentario texto id_publicacion autor fecha hora)
-  (if (and (string? texto) (integer? id_reaccion) (string? autor) (list? tiempo))
-      (list texto id_reaccion autor tiempo)
+(define (set_comentario texto c_id_publicacion autor fecha)
+  (if (and (string? texto) (integer? c_id_publicacion) (string? autor) (fecha? fecha))
+      (list texto c_id_publicacion autor fecha)
       null
       )
   )
@@ -37,11 +38,11 @@
 
 
 #|
- Descripción: Selecciona el id de la reaccion 
+ Descripción: Selecciona el id de la publicacion del comentario 
  Dominio: list
- Recorrido: str
+ Recorrido: int
 |#
-(define (get_id_reaccion comentario)
+(define (get_c_id_publicacion comentario)
   (if (= 4 (length comentario))
       (car (cdr comentario))
       null
@@ -54,7 +55,7 @@
  Dominio: list
  Recorrido: str
 |#
-(define (get_autor comentario)
+(define (get_autor_c comentario)
   (if (= 4 (length comentario))
       (car (cdr (cdr comentario)))
       null
@@ -63,17 +64,17 @@
 
 
 #|
- Descripción: Selecciona el tiempo del comentario
+ Descripción: Selecciona la fecha del comentario
  Dominio: list
  Recorrido: list
- Ejemplos:
 |#
-(define (get_tiempo comentario)
+(define (get_fecha_c comentario)
   (if (= 4 (length comentario))
       (car (cdr (cdr (cdr comentario))))
       null
       )
   )
+
 
 ; ///// Pertenencia /////
 
@@ -83,8 +84,8 @@
  Recorrido: bool
 |#
 (define (comentario? comentario)
-  (if (and (string? (get_texto comentario)) (string? (get_id_reaccion comentario)) (string? (get_autor comentario)) (list? (get_tiempo comentario)) 
-            )
+  (if (and (string? (get_texto comentario)) (integer? (get_c_id_publicacion comentario)) (string? (get_autor_c comentario)) (list? (get_fecha_c comentario))
+           )
       #t
       #f
       )
