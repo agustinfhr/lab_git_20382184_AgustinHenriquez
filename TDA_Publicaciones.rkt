@@ -1,22 +1,22 @@
 #lang racket
+
+(require "TDA_Fecha.rkt")
+(require "TDA_Usuario.rkt")
+(require "TDA_Comentario.rkt")
+
 ;TDA PUBLICACIONES
-;lista reacciones
-;id publicacion
-;autor
-;fecha
-
-
 
 ; ///// Constructor /////
 
 #|
  Descripción: contructor publicaciones
- Dominio: int x str x str x list x list 
+ Dominio: int x str x str x list x list x list 
  Recorrido: list
+ ejemplo: (set_publicacion 10 "user1" "primer post" '() '(4 5 2045) '()) 
 |#
-(define (set_publicacion id_publicacion autor contenido comentarios fecha)
-  (if (and (integer? id_publicacion) (string? autor) (string? contenido) (list? comentarios) (list? fecha))
-       (list id_publicacion autor contenido comentarios fecha)
+(define (set_publicacion id_publicacion autor contenido comentarios fecha usuarios_etiquetados)
+  (if (and (integer? id_publicacion) (string? autor) (string? contenido) (list? comentarios) (fecha? fecha) (list_str? usuarios_etiquetados))
+       (list id_publicacion autor contenido comentarios fecha usuarios_etiquetados)
       null
       )
   )
@@ -29,7 +29,7 @@
  Recorrido: int
 |#
 (define (get_id_publicacion publicacion)
-  (if (= 5 (length publicacion))
+  (if (= 6 (length publicacion))
       (car publicacion)
       null
       )
@@ -41,7 +41,7 @@
  Recorrido: str
 |#
 (define (get_autor_p publicacion)
-  (if (= 5 (length publicacion))
+  (if (= 6 (length publicacion))
       (car (cdr publicacion))
       null
       )
@@ -53,7 +53,7 @@
  Recorrido: str
 |#
 (define (get_contenido publicacion)
-  (if (= 5 (length publicacion))
+  (if (= 6 (length publicacion))
       (car (cdr (cdr publicacion)))
       null
       )
@@ -65,7 +65,7 @@
  Recorrido: list
 |#
 (define (get_comentarios publicacion)
-  (if (= 5 (length publicacion))
+  (if (= 6 (length publicacion))
       (car (cdr (cdr (cdr publicacion))))
       null
       )
@@ -74,11 +74,23 @@
 #|
  Descripción: Selecciona la fecha de la publicacion 
  Dominio: list
- Recorrido: int
+ Recorrido: list
 |#
 (define (get_fecha_p publicacion)
-  (if (= 5 (length publicacion))
+  (if (= 6 (length publicacion))
       (car (cdr (cdr (cdr (cdr publicacion)))))
+      null
+      )
+  )
+
+#|
+ Descripción: Selecciona los usuarios etiquetados de la publicacion 
+ Dominio: list
+ Recorrido: list
+|#
+(define (get_usuarios_etiquetados publicacion)
+  (if (= 6 (length publicacion))
+      (car (cdr (cdr (cdr (cdr (cdr publicacion))))))
       null
       )
   )
@@ -91,29 +103,10 @@
  Recorrido: bool
 |#
 (define (publicacion? publicacion)
-  (if (and (integer? get_id_publicacion) (string? get_autor_p) (string? get_contenido) (list? get_comentarios) (list? get_fecha_p))      
+  (if (and (integer? get_id_publicacion) (string? get_autor_p) (string? get_contenido) (list_comment? get_comentarios) (fecha? get_fecha_p) (list_str? get_usuarios_etiquetados))      
       #t
       #f
       )
   )
-
-; ///// Funciones Extra /////
-
-
-#|
- Descripción: Función que convierte una publicacion a un string 
- Dominio: list
- Recorrido: str
-|#
-(define (publicacion->string publicacion)
-  (if (null? publicacion)
-      null
-      (string-append "   " (get_contenido publicacion) "\n"                            
-                     "   Autor: " (get_autor_p publicacion)                          
-                     "  " "Fecha: (" (string-join (map number->string (get_fecha_p publicacion)) " ") ")"                           
-                     "  " "id publicacion: " (string-join(get_id_publicacion publicacion)) "\n" "\n"
-                     "   " (get_comentarios publicacion) "\n" "\n" "\n" "\n")              
-      )
-  )
-
+ 
 (provide (all-defined-out)) ;exporta todas las funciones de este archivo, debe ir al final

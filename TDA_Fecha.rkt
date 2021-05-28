@@ -1,6 +1,7 @@
 #lang racket
+
+
 ;TDA Fecha
-;dia mes año
 
 ; ///// Constructor /////
 

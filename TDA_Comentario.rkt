@@ -1,11 +1,8 @@
 #lang racket
-;TDA Comentarios
-;texto
-;autor
-;fecha
 
 (require "TDA_Fecha.rkt")
 
+;TDA Comentarios
 
 ; ///// Constructores /////
 
@@ -88,6 +85,21 @@
            )
       #t
       #f
+      )
+  )
+
+#|
+ Descripción: Verifica si los contenidos son de un comentario
+ Dominio: list
+ Recorrido: bool
+|#
+(define (list_comment? lista)
+  (if (null? lista)
+      #t
+      (if (comentario? (car lista))
+          (list_comment? (cdr lista))
+          #f
+          )
       )
   )
 

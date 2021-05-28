@@ -1,4 +1,5 @@
 #lang racket
+
 ;Funciones encryptFunction decryptFunction
 
 
@@ -16,8 +17,8 @@
 
 #|
  Descripción: Función que desencripta el contenido
- Dominio: list
- Recorrido: bool
+ Dominio: str
+ Recorrido: str
 |#
 (define (decryptFunction String)
   (if (null? String)

@@ -1,19 +1,16 @@
 #lang racket
-;TDA USUARIO
-;nombre de usuario
-;contraseña
-;id usuario
-;tipo de usuario
-
 
 (require "TDA_Fecha.rkt")
+
+
+;TDA USUARIO
 
 
 ; ///// Constructor /////
 
 #|
  Descripción: contructor usuario
- Dominio: str X str X list X list X list X list X list
+ Dominio: str X str X list X list X list X list X list X list
  Recorrido: list
  Ejemplo: (set_user "user1" "1234" '(4 3 2022) '("user2" "user3") '("user2" "user3") '(123) '(123) '(123))
 |#
@@ -24,7 +21,7 @@
       )
   )
 
-; ////// Selectores /////
+; ////// Selector /////
 
 #|
  Descripción: Selecciona el nombre de usuario
@@ -112,7 +109,7 @@
  Dominio: list
  Recorrido: list
 |#
-(define (p_compartidas_otro usuario)
+(define (get_p_compartidas_otro usuario)
   (if (= 8 (length usuario))
       (car (cdr (cdr (cdr (cdr (cdr (cdr (cdr usuario))))))))
       null
@@ -128,7 +125,7 @@
  Recorrido: bool
 |#
 (define (usuario? usuario)
-  (if (and (string? (get_nombre usuario)) (string? (get_contraseña usuario)) (fecha? (get_fecha_u usuario)) (list_str? (get_seguidores usuario)) (list_str? (get_seguidos usuario)) (list_int? (get_id_publicaciones usuario)) (list_int? (get_p_compartidas_yo usuario))(list_int? (get_p_compartidas_yo usuario)))
+  (if (and (string? (get_nombre usuario)) (string? (get_contraseña usuario)) (fecha? (get_fecha_u usuario)) (list_str? (get_seguidores usuario)) (list_str? (get_seguidos usuario)) (list_int? (get_id_publicaciones usuario)) (list_int? (get_p_compartidas_yo usuario))(list_int? (get_p_compartidas_otro usuario)))
       #t
       #f
       )
@@ -162,27 +159,6 @@
           #f
           )
       )
-  )
-
-
-
-
-; ///// Funcion extra /////
-
-#|
- Descripción: Función que convierte los datos de un usuario a string, esta función muestra todos los datos menos la contraseña de los usuarios registrados, para verla debe iniciar sesión
- Dominio: list
- Recorrido: str
-|#
-(define (usuario->string usuario)
-  (if (null? usuario)
-      null
-      (string-append
-       "   [ Nombre de usuario: " (get_nombre usuario) " ]"           
-       "   [ id publicaciones: " (string-join(map number->string (get_id_publicaciones usuario)) " ") " ]"                     
-       "\n" "\n" "\n"
-       )
-      )      
   )
 
 (provide (all-defined-out)) ;exporta todas las funciones de este archivo, debe ir al final
